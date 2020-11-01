@@ -1,0 +1,14 @@
+{
+    "name": "dots-online",
+    "private": true,
+    "version": "1.0.0",
+    "license": "MIT",
+    "workspaces": {
+        "packages": [
+            "packages/*"
+        ]
+    },
+    "dependencies": {
+        "socket.io": "^2.3.0"
+    }
+}
