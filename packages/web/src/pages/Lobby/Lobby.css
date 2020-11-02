@@ -1,0 +1,43 @@
+.Lobby {
+    max-width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Lobby > .players {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    padding: 14px;
+}
+
+.Lobby .players-list {
+    font-size: 36px;
+    text-align: left;
+    margin-top: 14px;
+}
+
+.Lobby .players-list > .player-char {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    padding: 2px 10px;
+}
+
+.Lobby .players-list > .player-char:not(:first-child) {
+    margin-left: 14px;
+}
+
+.Lobby > *:not(:first-child) {
+    margin-top: 14px;
+}
+
+.Lobby button {
+    font-size: 36px;
+    padding: 14px;
+}
