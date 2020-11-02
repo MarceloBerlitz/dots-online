@@ -1,4 +1,3 @@
-import { truncate } from 'fs';
 import { PlayerType, SidesEnum, SquareType } from 'lib';
 import React from 'react';
 import Square from '../../components/Square';

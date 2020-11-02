@@ -90,7 +90,6 @@ function App() {
         <Game turn={gameRoom.turn} matrix={gameRoom.matrix} onSquareClick={squareClickHandler} />}
 
       {(gameRoom?.state === GameRoomStatesEnum.OVER && finalScore) && <Over finalScore={finalScore} onOk={overOkHandler} />}
-
     </div >
   );
 }

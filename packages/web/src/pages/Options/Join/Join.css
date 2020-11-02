@@ -1,0 +1,25 @@
+.Join {
+    display: flex;
+    flex-direction: column;
+    font-size: 36px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-left: 1px;
+}
+
+.Join > *:not(:first-child) {
+    margin-top: 14px;
+}
+
+.Join button {
+    padding: 14px;
+}
+
+.Join > *, .Join > * > * {
+    display: block;
+    font-size: 36px;
+}
+
+.Join .label {
+    text-align: left;
+}

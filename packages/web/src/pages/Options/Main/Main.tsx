@@ -1,6 +1,8 @@
 import React from 'react';
 import { StepsEnum } from '../Options';
 
+import './Main.css';
+
 type Props = {
     char: string,
     onInputChar: (char: string) => void,
@@ -9,10 +11,11 @@ type Props = {
 
 const Main = (props: Props) => {
 
-    return (<div>
-        <label> Inicial
-            <input type="text" value={props.char} onChange={(val) => props.onInputChar(val.currentTarget.value)} />
-        </label>
+    return (<div className="Main">
+        <span className="char-span">
+            <label className="initial">Caractere</label>
+            <input className="input" type="text" value={props.char} onChange={(val) => props.onInputChar(val.currentTarget.value)} />
+        </span>
         <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.CREATE)}>Criar sala</button>
         <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.JOIN)}>Digitar código</button>
     </div>);
