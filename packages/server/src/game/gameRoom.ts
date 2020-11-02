@@ -11,7 +11,6 @@ export class GameRoom {
 
     public id: string;
     public matrix: Square[][];
-    public admin: Player;
     public players: Player[] = [];
     public state: GameRoomStatesEnum = GameRoomStatesEnum.CREATED;
 
@@ -27,7 +26,7 @@ export class GameRoom {
             rowList.push(colList);
         }
         this.id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-        this.admin = creator;
+        this.players = [creator];
         this.matrix = rowList;
     }
 
@@ -40,14 +39,14 @@ export class GameRoom {
         if (this.state !== GameRoomStatesEnum.CREATED) {
             throw new Error('Can not add players after the game already started.');
         }
-        if (this.players.some(plr => plr.char === player.char) || this.admin.char === player.char) {
+        if (this.players.some(plr => plr.char === player.char)) {
             throw new Error('Character is already in use.');
         }
         this.players.push(player);
     }
 
     public startGame(): void {
-        if (this.players.length === 0) {
+        if (this.players.length < 2) {
             throw new Error('At least 1 more player is required to start the game.');
         }
         this.state = GameRoomStatesEnum.RUNNING;

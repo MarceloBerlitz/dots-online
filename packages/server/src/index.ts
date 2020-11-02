@@ -23,7 +23,7 @@ io.on('connection', (socket: Socket) => {
 
    socket.on('create-room', (payload) => {
       console.log('> Create Room', { payload })
-      const admin = Player.create(playerId, payload.char);
+      const admin = Player.createAdmin(playerId, payload.char);
       const newRoom = GameRoom.create(payload.rows, payload.cols, admin);
       games.push(newRoom);
       socket.emit('room-created', newRoom);
@@ -35,14 +35,14 @@ io.on('connection', (socket: Socket) => {
          socket.emit('custom-error', { message: 'Room does not exist.' });
       } else {
          game.addPlayer(Player.create(playerId, payload.char));
-         [game.admin, ...game.players].forEach(p => {
+         game.players.forEach(p => {
             io.to(p.id).emit('player-joined', game);
          });
       }
    });
 
    socket.on('start-game', () => {
-      const game = games.find(g => g.admin.id === playerId);
+      const game = games.find(g => g.players.find(p => p.isAdmin).id === playerId);
       if (game) {
          try {
             game.startGame();
@@ -59,10 +59,10 @@ io.on('connection', (socket: Socket) => {
    socket.on('disconnect', () => {
       console.log(`> Player disconnected: ${playerId}`);
 
-      const currentGameIndex = games.findIndex(game => game.admin.id === playerId || game.players.some(plr => plr.id === playerId));
+      const currentGameIndex = games.findIndex(game => game.players.some(plr => plr.id === playerId));
       if (currentGameIndex >= 0) {
          const currentGame = games[currentGameIndex];
-         [currentGame.admin, ...currentGame.players].forEach((player: Player) => {
+         currentGame.players.forEach((player: Player) => {
             io.to(player.id).emit('custom-error', { message: 'Player disconnected.' });
          });
          games.splice(currentGameIndex, 1);
