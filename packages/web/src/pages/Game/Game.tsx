@@ -1,6 +1,8 @@
-import { PlayerType, SidesEnum, SquareType } from 'lib';
 import React from 'react';
+
+import { PlayerType, SidesEnum, SquareType } from 'lib';
 import Square from '../../components/Square';
+import './Game.css';
 
 type Props = {
     turn: PlayerType;
@@ -9,11 +11,16 @@ type Props = {
 };
 
 const Game = (props: Props) => {
-    return <div className="game">
-        <h1>Vez de {props.turn.char}</h1>
-        {props.matrix.map((row: any, rowIndex: number) => <div className="row">
-            {row.map((square: any, colIndex: number) => <Square {...square} onMark={(side: SidesEnum) => props.onSquareClick(rowIndex, colIndex, side)} />)}
-        </div>)}
+    return <div className="Game">
+        <h1>Vez de "{props.turn.char}"</h1>
+        <div className="matrix">
+            {props.matrix.map((row: SquareType[], rowIndex: number) => <div className="row">
+                {row.map((square: SquareType, colIndex: number) => <Square {...square}
+                    rowIndex={rowIndex} colIndex={colIndex}
+                    rowLength={props.matrix.length} colLength={row.length}
+                    onMark={(side: SidesEnum) => props.onSquareClick(rowIndex, colIndex, side)} />)}
+            </div>)}
+        </div>
     </div>
 }
 

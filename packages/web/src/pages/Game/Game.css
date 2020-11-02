@@ -1,0 +1,16 @@
+.Game {
+    max-width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Game .matrix {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
