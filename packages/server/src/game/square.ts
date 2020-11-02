@@ -1,10 +1,8 @@
+import { Side, SquareType } from "lib";
+
 import { Player } from "./player";
 
-export type Side = {
-    isMarked: boolean;
-}
-
-export class Square {
+export class Square implements SquareType {
     public top: Side;
     public right: Side;
     public bottom: Side;

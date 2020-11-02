@@ -1,4 +1,6 @@
-export class Player {
+import { PlayerType } from "lib";
+
+export class Player implements PlayerType {
     public id: string;
     public score: number = 0;
     public char: string;

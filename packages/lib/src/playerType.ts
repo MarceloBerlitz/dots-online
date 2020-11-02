@@ -1,4 +1,4 @@
-export type Player = {
+export type PlayerType = {
     id: string;
     score: number;
     char: string;

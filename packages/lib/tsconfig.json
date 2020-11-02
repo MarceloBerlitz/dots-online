@@ -1,11 +1,6 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
-        "noImplicitAny": true,
         "target": "ES5",
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "esModuleInterop": true,
         "outDir": "./dist",
         "sourceMap": true
     },

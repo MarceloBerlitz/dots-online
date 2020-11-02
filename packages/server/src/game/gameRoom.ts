@@ -1,13 +1,8 @@
 import { Player } from "./player";
 import { Square } from "./square";
+import { GameRoomStatesEnum, GameRoomType, SidesEnum } from 'lib';
 
-enum GameRoomStatesEnum {
-    CREATED,
-    RUNNING,
-    OVER
-}
-
-export class GameRoom {
+export class GameRoom implements GameRoomType {
 
     public id: string;
     public matrix: Square[][];
@@ -45,7 +40,7 @@ export class GameRoom {
         return !square.owner && square.top.isMarked && square.right.isMarked && square.bottom.isMarked && square.left.isMarked;
     }
 
-    private markOwnedSquares(rowIndex: number, colIndex: number, side: 'top' | 'right' | 'bottom' | 'left'): boolean {
+    private markOwnedSquares(rowIndex: number, colIndex: number, side: SidesEnum): boolean {
         const square = this.matrix[rowIndex][colIndex];
 
         const initialScore = this.turn.score;
@@ -120,7 +115,7 @@ export class GameRoom {
         this.turn = this.players[firstIndex];
     }
 
-    public play(rowIndex: number, colIndex: number, side: 'top' | 'right' | 'bottom' | 'left'): void {
+    public play(rowIndex: number, colIndex: number, side: SidesEnum): void {
         const square = this.matrix[rowIndex][colIndex];
         if (square[side].isMarked) {
             throw new Error('Already taken.');

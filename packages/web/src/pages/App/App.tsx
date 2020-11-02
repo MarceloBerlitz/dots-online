@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import io from 'socket.io-client';
 
+import { GameRoomType, SidesEnum } from 'lib';
 import Square from '../../components/Square';
 
 import './App.css';
@@ -14,18 +15,18 @@ socket.on('connect', () => {
 });
 
 function App() {
-  const [gameRoom, setGameRoom] = useState<any>(null);
+  const [gameRoom, setGameRoom] = useState<GameRoomType>();
   const [char, setChar] = useState('');
   const [roomId, setRoomId] = useState('');
   const [text, setText] = useState('Aguardando líder...');
 
   useEffect(() => {
-    socket.on('room-created', (payload: any) => {
+    socket.on('room-created', (payload: GameRoomType) => {
       console.log('Room created', { payload });
       setGameRoom(payload);
     });
 
-    socket.on('player-joined', (payload: any) => {
+    socket.on('player-joined', (payload: GameRoomType) => {
       setGameRoom(payload);
     });
 
@@ -33,7 +34,7 @@ function App() {
       alert(payload.message);
     });
 
-    socket.on('next-player', (payload: any) => {
+    socket.on('next-player', (payload: GameRoomType) => {
       setGameRoom(payload);
       if (payload.turn.char === char) {
         setText('Sua vez...');
@@ -59,8 +60,8 @@ function App() {
     }
   }
 
-  const squareClickHandler = (rowIndex: number, colIndex: number, side: 'top' | 'right' | 'bottom' | 'left') => {
-    if (gameRoom.turn.char === char) {
+  const squareClickHandler = (rowIndex: number, colIndex: number, side: SidesEnum) => {
+    if (gameRoom?.turn.char === char) {
       socket.emit('play', { rowIndex, colIndex, side })
     }
   }
@@ -82,7 +83,7 @@ function App() {
       {
         (gameRoom?.matrix && gameRoom.state === 1) && <div className="game">
           {gameRoom.matrix.map((row: any, rowIndex: number) => <div className="row">
-            {row.map((square: any, colIndex: number) => <Square {...square} onMark={(side) => squareClickHandler(rowIndex, colIndex, side)} />)}
+            {row.map((square: any, colIndex: number) => <Square {...square} onMark={(side: SidesEnum) => squareClickHandler(rowIndex, colIndex, side)} />)}
           </div>)}
         </div>
       }

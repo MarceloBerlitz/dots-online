@@ -2,6 +2,7 @@
     "name": "dots-online",
     "private": true,
     "version": "1.0.0",
+    "author": "Marcelo Berlitz",
     "license": "MIT",
     "workspaces": {
         "packages": [

@@ -1,4 +1,4 @@
-import { Player } from "./Player"
+import { PlayerType } from "./playerType"
 
 export type Side = {
     isMarked: boolean;
@@ -9,5 +9,5 @@ export type SquareType = {
     right: Side;
     bottom: Side;
     left: Side;
-    owner?: Player;
+    owner?: PlayerType;
 }
