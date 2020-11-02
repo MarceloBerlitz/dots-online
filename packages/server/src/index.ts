@@ -32,7 +32,7 @@ io.on('connection', (socket: Socket) => {
    socket.on('join-room', (payload) => {
       const game = games.find(g => g.id === payload.roomId);
       if (!game) {
-         socket.emit('error', { message: 'Room does not exist.' });
+         socket.emit('custom-error', { message: 'Room does not exist.' });
       } else {
          game.addPlayer(Player.create(playerId, payload.char));
          [game.admin, ...game.players].forEach(p => {
@@ -44,10 +44,15 @@ io.on('connection', (socket: Socket) => {
    socket.on('start-game', () => {
       const game = games.find(g => g.admin.id === playerId);
       if (game) {
-         game.startGame();
-         game.players.forEach(p => io.to(p.id).emit('game-started'));
+         try {
+            game.startGame();
+            game.players.forEach(p => io.to(p.id).emit('game-started'));
+         } catch (err) {
+            socket.emit('custom-error', { message: err });
+         }
+
       } else {
-         socket.emit('error', { message: 'You can not start a game.' });
+         socket.emit('custom-error', { message: 'You can not start a game.' });
       }
    });
 
@@ -56,8 +61,9 @@ io.on('connection', (socket: Socket) => {
 
       const currentGameIndex = games.findIndex(game => game.admin.id === playerId || game.players.some(plr => plr.id === playerId));
       if (currentGameIndex >= 0) {
-         games[currentGameIndex].players.forEach((player: Player) => {
-            io.to(player.id).emit('error', { message: 'Player disconnected.' });
+         const currentGame = games[currentGameIndex];
+         [currentGame.admin, ...currentGame.players].forEach((player: Player) => {
+            io.to(player.id).emit('custom-error', { message: 'Player disconnected.' });
          });
          games.splice(currentGameIndex, 1);
       }

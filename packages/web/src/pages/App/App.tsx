@@ -14,10 +14,6 @@ socket.on('connect', () => {
   console.log(`Player connected on Client with id: ${playerId}`)
 });
 
-socket.on('error', (payload: { message: string }) => {
-  alert(payload.message);
-})
-
 function App() {
   const [gameRoom, setGameRoom] = useState<any>(null);
   const [char, setChar] = useState('');
@@ -32,6 +28,11 @@ function App() {
     socket.on('player-joined', (payload: any) => {
       setGameRoom(payload);
     });
+
+    socket.on('custom-error', (payload: { message: string }) => {
+      alert(payload.message);
+      setGameRoom(null);
+    })
   }, [])
 
   const newGameClickHandler = () => {
