@@ -86,8 +86,8 @@ export class GameRoom implements GameRoomType {
         }
 
         if (this.turn.score > initialScore) {
-            if (this.players.map(p => p.score).reduce((acc, cur) => acc + cur, 0) < (this.matrix.length + 1) * (this.matrix[0].length + 1)) {
-                this.turn.winner = true;
+            if (this.players.map(p => p.score).reduce((acc, cur) => acc + cur, 0) === (this.matrix.length) * (this.matrix[0].length)) {
+                this.state = GameRoomStatesEnum.OVER;
             };
             return true;
         } else {

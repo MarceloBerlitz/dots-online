@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import io from 'socket.io-client';
 
-import { GameRoomType, SidesEnum } from 'lib';
+import { GameRoomType, PlayerType, SidesEnum } from 'lib';
 import Square from '../../components/Square';
 
 import './App.css';
@@ -18,6 +18,7 @@ function App() {
   const [gameRoom, setGameRoom] = useState<GameRoomType>();
   const [char, setChar] = useState('');
   const [roomId, setRoomId] = useState('');
+  const [finalScore, setFinalScore] = useState<PlayerType[]>()
   const [text, setText] = useState('Aguardando líder...');
 
   useEffect(() => {
@@ -36,17 +37,18 @@ function App() {
 
     socket.on('next-player', (payload: GameRoomType) => {
       setGameRoom(payload);
-      if (payload.turn.char === char) {
-        setText('Sua vez...');
-      } else {
-        setText(`Vez de ${payload.turn.char}`)
-      }
+      setText(`Vez de ${payload.turn.char}.`)
+    });
+
+    socket.on('game-over', (payload: GameRoomType) => {
+      setGameRoom(payload);
+      setFinalScore(payload.players.sort((p1, p2) => p2.score - p1.score));
     });
   }, [])
 
   const newGameClickHandler = () => {
     if (char.length === 1) {
-      socket.emit('create-room', { rows: 10, cols: 10, char })
+      socket.emit('create-room', { rows: 2, cols: 2, char })
     }
   }
 
@@ -87,6 +89,13 @@ function App() {
           </div>)}
         </div>
       }
+      {(gameRoom?.state === 2 && finalScore) && <div>
+        <h1>Fim de jogo</h1>
+        <h2>Resultado: </h2>
+        <ol>
+          {finalScore.map((player: PlayerType) => <li>{player.char}: {player.score}</li>)}
+        </ol>
+      </div>}
 
     </div >
   );

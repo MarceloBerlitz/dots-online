@@ -5,6 +5,7 @@ import socket, { Socket } from 'socket.io';
 
 import { GameRoom } from './game/gameRoom';
 import { Player } from './game/player';
+import { GameRoomStatesEnum } from 'lib';
 
 const app = express();
 const server = http.createServer(app);
@@ -64,7 +65,11 @@ io.on('connection', (socket: Socket) => {
       if (game && game.turn.id === playerId) {
          try {
             game.play(payload.rowIndex, payload.colIndex, payload.side);
-            game.players.forEach(p => io.to(p.id).emit('next-player', game));
+            if (game.state === GameRoomStatesEnum.OVER) {
+               game.players.forEach(p => io.to(p.id).emit('game-over', game));
+            } else {
+               game.players.forEach(p => io.to(p.id).emit('next-player', game));
+            }
          } catch (err) {
             socket.emit('custom-error', { message: err });
          }
