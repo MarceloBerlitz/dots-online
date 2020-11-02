@@ -7,12 +7,16 @@ import './Game.css';
 type Props = {
     turn: PlayerType;
     matrix: SquareType[][];
+    onClose: () => void;
     onSquareClick: (rowIndex: number, colIndex: number, side: SidesEnum) => void
 };
 
 const Game = (props: Props) => {
     return <div className="Game">
-        <h1>Vez de "{props.turn.char}"</h1>
+        <span className="title-span">
+            <h1>Vez de "{props.turn.char}"</h1>
+            <button className="close-game" onClick={props.onClose}>X</button>
+        </span>
         <div className="matrix">
             {props.matrix.map((row: SquareType[], rowIndex: number) => <div className="row">
                 {row.map((square: SquareType, colIndex: number) => <Square {...square}

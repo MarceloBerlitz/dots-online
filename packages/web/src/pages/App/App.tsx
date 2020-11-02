@@ -18,6 +18,10 @@ socket.on('connect', () => {
   console.log(`Player connected on Client with id: ${playerId}`)
 });
 
+socket.on('disconnect', () => {
+  socket.connect();
+})
+
 function App() {
   const [gameRoom, setGameRoom] = useState<GameRoomType | null>();
   const [charState, setCharState] = useState('');
@@ -74,7 +78,8 @@ function App() {
     }
   }
 
-  const overOkHandler = () => {
+  const gameOverHandler = () => {
+    socket.disconnect();
     setGameRoom(null);
     setFinalScore([]);
   }
@@ -87,9 +92,9 @@ function App() {
         <Lobby roomId={gameRoom.id} players={gameRoom.players} onStartGame={startGameHandler} isAdmin={isAdmin()} />}
 
       {(gameRoom?.matrix && gameRoom.state === GameRoomStatesEnum.RUNNING) &&
-        <Game turn={gameRoom.turn} matrix={gameRoom.matrix} onSquareClick={squareClickHandler} />}
+        <Game turn={gameRoom.turn} matrix={gameRoom.matrix} onSquareClick={squareClickHandler} onClose={gameOverHandler} />}
 
-      {(gameRoom?.state === GameRoomStatesEnum.OVER && finalScore) && <Over finalScore={finalScore} onOk={overOkHandler} />}
+      {(gameRoom?.state === GameRoomStatesEnum.OVER && finalScore) && <Over finalScore={finalScore} onOk={gameOverHandler} />}
     </div >
   );
 }

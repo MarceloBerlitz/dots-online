@@ -9,8 +9,20 @@
     text-align: center;
 }
 
+.Game .title-span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .Game .matrix {
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+}
+
+.Game .close-game {
+    font-size: 32px;
+    width: 48px;
+    margin-left: 14px;
 }
