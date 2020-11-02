@@ -27,9 +27,9 @@ const Options = (props: OptionsProps) => {
             case StepsEnum.MAIN:
                 return <Main char={char} onInputChar={(char) => setChar(char)} onSelectStep={selectStepHandler} />
             case StepsEnum.CREATE:
-                return <Create onCreate={(rows, cols) => props.onCreate(rows, cols, char)} />
+                return <Create onCreate={(rows, cols) => props.onCreate(rows, cols, char)} onBack={() => setStep(StepsEnum.MAIN)} />
             case StepsEnum.JOIN:
-                return <Join onJoin={roomId => props.onJoin(roomId, char)} />
+                return <Join onJoin={roomId => props.onJoin(roomId, char)} onBack={() => setStep(StepsEnum.MAIN)} />
         }
     }
 

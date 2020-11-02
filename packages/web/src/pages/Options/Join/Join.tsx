@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import './Join.css';
 
 type Props = {
-    onJoin: (roomId: string) => void
+    onJoin: (roomId: string) => void;
+    onBack: () => void;
 }
 
 const Join = (props: Props) => {
@@ -14,6 +15,7 @@ const Join = (props: Props) => {
         <label className="label">Código</label>
         <input className="input" type="text" value={roomId} onChange={change => setRoomId(change.currentTarget.value)} />
         <button disabled={roomId.length === 0} onClick={() => props.onJoin(roomId)}>Entrar</button>
+        <button onClick={() => props.onBack()}>Voltar</button>
     </div>
 };
 

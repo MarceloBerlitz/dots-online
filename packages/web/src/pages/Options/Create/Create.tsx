@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import './Create.css';
 
 type Props = {
-    onCreate: (rows: number, cols: number) => void
+    onCreate: (rows: number, cols: number) => void;
+    onBack: () => void;
 }
 
 const Create = (props: Props) => {
@@ -22,8 +23,8 @@ const Create = (props: Props) => {
             <input className="input" type="text" maxLength={2} value={cols} onChange={change => setCols(change.currentTarget.value)} />
         </span>
 
-
         <button disabled={rows.length === 0 || cols.length === 0} onClick={() => props.onCreate(+rows, +cols)}>Criar sala</button>
+        <button onClick={() => props.onBack()}>Voltar</button>
     </div>
 };
 
