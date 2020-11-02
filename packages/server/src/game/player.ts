@@ -1,8 +1,9 @@
 export class Player {
     public id: string;
-    public points: number = 0;
+    public score: number = 0;
     public char: string;
     public isAdmin: boolean;
+    public winner: boolean = false;
 
     private constructor(id: string, char: string, isAdmin: boolean) {
         this.id = id;

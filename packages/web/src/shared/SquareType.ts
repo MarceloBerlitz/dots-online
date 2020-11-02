@@ -1,7 +1,13 @@
-export class SquareType {
-    public top: boolean = false;
-    public right: boolean = false;
-    public bottom: boolean = false;
-    public left: boolean = false;
-    public owner?: string;
+import { Player } from "./Player"
+
+export type Side = {
+    isMarked: boolean;
+}
+
+export type SquareType = {
+    top: Side;
+    right: Side;
+    bottom: Side;
+    left: Side;
+    owner?: Player;
 }

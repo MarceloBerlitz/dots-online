@@ -34,10 +34,14 @@ io.on('connection', (socket: Socket) => {
       if (!game) {
          socket.emit('custom-error', { message: 'Room does not exist.' });
       } else {
-         game.addPlayer(Player.create(playerId, payload.char));
-         game.players.forEach(p => {
-            io.to(p.id).emit('player-joined', game);
-         });
+         try {
+            game.addPlayer(Player.create(playerId, payload.char));
+            game.players.forEach(p => {
+               io.to(p.id).emit('player-joined', game);
+            });
+         } catch (err) {
+            socket.emit('custom-error', { message: err });
+         }
       }
    });
 
@@ -46,15 +50,29 @@ io.on('connection', (socket: Socket) => {
       if (game) {
          try {
             game.startGame();
-            game.players.forEach(p => io.to(p.id).emit('game-started'));
+            game.players.forEach(p => io.to(p.id).emit('next-player', game));
          } catch (err) {
             socket.emit('custom-error', { message: err });
          }
-
       } else {
          socket.emit('custom-error', { message: 'You can not start a game.' });
       }
    });
+
+   socket.on('play', (payload) => {
+      const game = games.find(g => g.players.some(p => p.id === playerId));
+      if (game && game.turn.id === playerId) {
+         try {
+            game.play(payload.rowIndex, payload.colIndex, payload.side);
+            game.players.forEach(p => io.to(p.id).emit('next-player', game));
+         } catch (err) {
+            socket.emit('custom-error', { message: err });
+         }
+      } else {
+         socket.emit('custom-error', { message: 'Can not play.' });
+      }
+
+   })
 
    socket.on('disconnect', () => {
       console.log(`> Player disconnected: ${playerId}`);
