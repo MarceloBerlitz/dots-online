@@ -1,0 +1,29 @@
+version: "3.8"
+
+volumes:
+  lib_vol: {}
+
+services:
+  lib:
+    build:
+      context: ./packages/lib
+    volumes: 
+      - lib_vol:/user/app
+  server:
+    ports:
+      - "3333:3333"
+    depends_on:
+      - lib
+    volumes: 
+      - lib_vol:/user/app/node_modules/lib
+    build:
+      context: ./packages/server
+  web:
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - lib
+    volumes: 
+      - lib_vol:/user/app/node_modules/lib
+    build:
+      context: ./packages/web

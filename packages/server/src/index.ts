@@ -14,7 +14,7 @@ const io = socket(server);
 const games: GameRoom[] = [];
 
 app.use(cors({
-   origin: 'http://localhost:3000',
+   origin: process.env.WEB_URL || 'http://localhost:3000',
    credentials: true,
 }));
 
@@ -94,6 +94,6 @@ io.on('connection', (socket: Socket) => {
 
 });
 
-server.listen(3333, () => {
+server.listen(process.env.PORT || 3333, () => {
    console.log('Listening');
 })
