@@ -1,12 +1,13 @@
 {
     "name": "@dots-online/server",
-    "main": "src/index.ts",
+    "main": "dist/index.ts",
     "private": false,
-    "version": "1.0.0",
-    "author": "Marcelo Berlitz",
+    "version": "1.0.1",
+    "author": "marceloberlitz",
     "license": "MIT",
     "scripts": {
-        "start": "ts-node ./src/index.ts"
+        "start": "ts-node ./src/index.ts",
+        "build": "tsc --declaration"
     },
     "dependencies": {
         "@types/cors": "^2.8.8",
