@@ -1,4 +1,4 @@
-import { Side, SquareType } from "lib";
+import { Side, SquareType } from "dots-online-lib";
 
 import { Player } from "./player";
 

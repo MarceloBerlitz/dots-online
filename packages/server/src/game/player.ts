@@ -1,4 +1,4 @@
-import { PlayerType } from "lib";
+import { PlayerType } from "dots-online-lib";
 
 export class Player implements PlayerType {
     public id: string;

@@ -1,6 +1,6 @@
 import { Player } from "./player";
 import { Square } from "./square";
-import { GameRoomStatesEnum, GameRoomType, SidesEnum } from 'lib';
+import { GameRoomStatesEnum, GameRoomType, SidesEnum } from 'dots-online-lib';
 
 export class GameRoom implements GameRoomType {
 

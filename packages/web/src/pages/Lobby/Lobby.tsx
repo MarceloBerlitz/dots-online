@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PlayerType } from 'lib';
+import { PlayerType } from 'dots-online-lib';
 import './Lobby.css';
 
 type Props = {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SidesEnum, SquareType } from 'lib';
+import { SidesEnum, SquareType } from 'dots-online-lib';
 
 import './Square.css';
 

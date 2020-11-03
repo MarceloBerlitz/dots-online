@@ -5,7 +5,7 @@ import socket, { Socket } from 'socket.io';
 
 import { GameRoom } from './game/gameRoom';
 import { Player } from './game/player';
-import { GameRoomStatesEnum } from 'lib';
+import { GameRoomStatesEnum } from 'dots-online-lib';
 
 const app = express();
 const server = http.createServer(app);
@@ -93,6 +93,8 @@ io.on('connection', (socket: Socket) => {
    });
 
 });
+
+app.use(express.static('public'));
 
 server.listen(process.env.PORT || 3333, () => {
    console.log('Listening');

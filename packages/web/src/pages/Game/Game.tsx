@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PlayerType, SidesEnum, SquareType } from 'lib';
+import { PlayerType, SidesEnum, SquareType } from 'dots-online-lib';
 import Square from '../../components/Square';
 import './Game.css';
 
