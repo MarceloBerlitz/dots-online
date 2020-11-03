@@ -1,7 +1,8 @@
 {
   "name": "dots-online-lib",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "marceloberlitz",
   "license": "MIT",
   "scripts": {
@@ -11,5 +12,8 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {},
-  "description": ""
+  "description": "",
+  "files": [
+    "dist/**/*"
+  ]
 }
