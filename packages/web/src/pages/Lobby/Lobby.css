@@ -25,17 +25,25 @@
     padding: 10px;
 }
 
+.Lobby > .room > .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .Lobby > .room > h2 {
     margin-bottom: 10px;
 }
 
-.Lobby > .room > input {
+.Lobby > .room > .row > input {
     font-size: 16px;
+    width: 176px;
     padding: 4px;
 }
 
-.Lobby > .room > button {
+.Lobby > .room > .row > button {
     font-size: 16px;
+    width: 80px;
     padding: 4px;
 }
 

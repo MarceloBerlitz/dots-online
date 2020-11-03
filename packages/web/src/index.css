@@ -18,3 +18,9 @@ body button:hover {
 code {
   font-family: 'Nova Square', sans-serif;
 }
+
+input, button {
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}

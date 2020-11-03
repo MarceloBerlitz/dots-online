@@ -13,7 +13,7 @@ const Main = (props: Props) => {
 
     return (<div className="Main">
         <span className="char-span">
-            <label className="initial">Caractere</label>
+            <label className="initial">Sua inicial</label>
             <input className="input" type="text" value={props.char} onChange={(val) => props.onInputChar(val.currentTarget.value)} />
         </span>
         <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.CREATE)}>Criar sala</button>

@@ -32,7 +32,7 @@ const Lobby = (props: Props) => {
     return <div className="Lobby">
         <div className="room">
             <h3>Número da sala:</h3>
-            <input ref={roomNumberRef} value={props.roomId} /> <button disabled={copied} onClick={copyClickHandler}>{copied ? 'Copiado' : 'Copiar'}</button>
+            <div className="row"><input ref={roomNumberRef} value={props.roomId} /> <button disabled={copied} onClick={copyClickHandler}>{copied ? 'Copiado' : 'Copiar'}</button></div>
         </div>
         <div className="players">
             <h3>Jogadores conectados:</h3>
