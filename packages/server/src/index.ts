@@ -10,6 +10,7 @@ import { GameRoomStatesEnum } from 'dots-online-lib';
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);
+const port = process.env.PORT || 3333;
 
 const games: GameRoom[] = [];
 
@@ -96,6 +97,6 @@ io.on('connection', (socket: Socket) => {
 
 app.use(express.static('public'));
 
-server.listen(process.env.PORT || 3333, () => {
-   console.log('Listening');
+server.listen(port, () => {
+   console.log('Listening on port ' + port);
 })
