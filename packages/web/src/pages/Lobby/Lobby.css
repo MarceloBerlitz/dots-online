@@ -1,9 +1,9 @@
 .Lobby {
-    max-width: 500px;
+    width: 300px;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    top: 30px;
+    top: 50%;
+    transform: translateY(-70%) translateX(-50%);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -13,7 +13,30 @@
     border-width: 2px;
     border-color: black;
     border-style: solid;
-    padding: 14px;
+    padding: 10px;
+    text-align: start;
+}
+
+.Lobby > .room {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    text-align: start;
+    padding: 10px;
+}
+
+.Lobby > .room > h2 {
+    margin-bottom: 10px;
+}
+
+.Lobby > .room > input {
+    font-size: 16px;
+    padding: 4px;
+}
+
+.Lobby > .room > button {
+    font-size: 16px;
+    padding: 4px;
 }
 
 .Lobby .players-list {

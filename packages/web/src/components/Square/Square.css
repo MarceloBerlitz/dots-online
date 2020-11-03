@@ -1,5 +1,5 @@
 .Square {
-    background-color: #C1D9D6;
+    background-color: white;
     margin: 0;
     padding: 0;
     min-width: 50px;
@@ -148,39 +148,39 @@
   .vertical.left {
     /*border-top-right-radius: 5px;*/
     /*border-bottom-right-radius: 5px;*/
-    background: linear-gradient(to left,  #C1D9D6 0%,#C1D9D6 50%,#0F403B 50%,#0F403B 100%);
+    background: linear-gradient(to left,  white 0%,white 50%,#0F403B 50%,#0F403B 100%);
   }
   
   .vertical.right {
     /*border-top-left-radius: 5px;*/
     /*border-bottom-left-radius: 5px;*/
-    background: linear-gradient(to right,  #C1D9D6 0%,#C1D9D6 50%,#0F403B 50%,#0F403B 100%);
+    background: linear-gradient(to right,  white 0%,white 50%,#0F403B 50%,#0F403B 100%);
   }
   
   .horizontal.top {
     /*border-bottom-left-radius: 5px;*/
     /*border-bottom-right-radius: 5px;*/
-    background: linear-gradient(to top,  #C1D9D6 0%,#C1D9D6 50%,#0F403B 50%,#0F403B 100%);
+    background: linear-gradient(to top,  white 0%,white 50%,#0F403B 50%,#0F403B 100%);
   }
   
   .horizontal.bottom {
     /*border-top-left-radius: 5px;*/
     /*border-top-right-radius: 5px;*/
-    background: linear-gradient(to bottom,  #C1D9D6 0%,#C1D9D6 50%,#0F403B 50%,#0F403B 100%);
+    background: linear-gradient(to bottom,  white 0%,white 50%,#0F403B 50%,#0F403B 100%);
   }
   
   .horizontal-limit.top {
-    background: linear-gradient(to top,  #C1D9D6 0%,#C1D9D6 25%,#0F403B 25%,#0F403B 75%, #C1D9D6 75%,#C1D9D6 100%);
+    background: linear-gradient(to top,  white 0%,white 25%,#0F403B 25%,#0F403B 75%, white 75%,white 100%);
   }
   
   .horizontal-limit.bottom {
-    background: linear-gradient(to top,  #C1D9D6 0%,#C1D9D6 25%,#0F403B 25%,#0F403B 75%, #C1D9D6 75%,#C1D9D6 100%);
+    background: linear-gradient(to top,  white 0%,white 25%,#0F403B 25%,#0F403B 75%, white 75%,white 100%);
   }
   
   .vertical-limit.left {
-    background: linear-gradient(to left,  #C1D9D6 0%,#C1D9D6 25%,#0F403B 25%,#0F403B 75%, #C1D9D6 75%,#C1D9D6 100%);
+    background: linear-gradient(to left,  white 0%,white 25%,#0F403B 25%,#0F403B 75%, white 75%,white 100%);
   }
   
   .vertical-limit.right {
-    background: linear-gradient(to left,  #C1D9D6 0%,#C1D9D6 25%,#0F403B 25%,#0F403B 75%, #C1D9D6 75%,#C1D9D6 100%);
+    background: linear-gradient(to left,  white 0%,white 25%,#0F403B 25%,#0F403B 75%, white 75%,white 100%);
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { PlayerType } from 'dots-online-lib';
+import './Over.css';
 
 type Props = {
     finalScore: PlayerType[];
@@ -8,12 +9,15 @@ type Props = {
 }
 
 const Over = (props: Props) => {
-    return <div>
+    return <div className="Over">
         <h1>Fim de jogo</h1>
-        <h2>Resultado: </h2>
-        <ol>
-            {props.finalScore.map((player: PlayerType) => <li>{player.char}: {player.score}</li>)}
-        </ol>
+        <div className="result-box">
+            <h2 className="result">Resultado: </h2>
+            <ol className="list">
+                {props.finalScore.map((player: PlayerType) => <li>{player.char} - {player.score} ponto(s)</li>)}
+            </ol>
+        </div>
+        <button onClick={props.onOk}>Início</button>
     </div>
 }
 

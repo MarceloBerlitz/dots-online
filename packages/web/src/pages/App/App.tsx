@@ -89,7 +89,7 @@ function App() {
       {!gameRoom?.matrix && <Options onCreate={createHandler} onJoin={joinHandler} />}
 
       {(gameRoom?.matrix && gameRoom.state === GameRoomStatesEnum.CREATED) &&
-        <Lobby roomId={gameRoom.id} players={gameRoom.players} onStartGame={startGameHandler} isAdmin={isAdmin()} />}
+        <Lobby roomId={gameRoom.id} players={gameRoom.players} onStartGame={startGameHandler} isAdmin={isAdmin()} onCancel={gameOverHandler} />}
 
       {(gameRoom?.matrix && gameRoom.state === GameRoomStatesEnum.RUNNING) &&
         <Game turn={gameRoom.turn} matrix={gameRoom.matrix} onSquareClick={squareClickHandler} onClose={gameOverHandler} />}

@@ -1,0 +1,49 @@
+.Over {
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-70%) translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Over button {
+    font-size: 36px;
+    padding: 14px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+.Over h1 {
+    font-size: 40px;
+    padding: 14px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+
+.Over .result-box {
+    padding: 14px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+
+.Over .result-box .result {
+    text-align: start;
+}
+
+.Over .result-box .list {
+    text-align: start;
+    width: fit-content;
+}
+
+.Over .result-box .list li {
+    font-size: 20px;
+    width: fit-content;
+}

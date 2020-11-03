@@ -17,7 +17,7 @@ const Main = (props: Props) => {
             <input className="input" type="text" value={props.char} onChange={(val) => props.onInputChar(val.currentTarget.value)} />
         </span>
         <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.CREATE)}>Criar sala</button>
-        <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.JOIN)}>Digitar código</button>
+        <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.JOIN)}>Entrar</button>
     </div>);
 }
 
