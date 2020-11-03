@@ -10,7 +10,7 @@ import Lobby from '../Lobby';
 import Game from '../Game';
 import Over from '../Over';
 
-const socket = io(process.env.SERVER_URL || 'http://localhost:3333');
+const socket = io();
 
 let playerId: string;
 socket.on('connect', () => {
