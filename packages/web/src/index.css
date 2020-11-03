@@ -1,7 +1,7 @@
 body * {
   margin: 0;
-  font-family: 'Nova Square', sans-serif;
-  text-transform: uppercase;
+  font-family: 'Itim', sans-serif;
+  /* text-transform: uppercase; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -16,7 +16,7 @@ body button:hover {
 }
 
 code {
-  font-family: 'Nova Square', sans-serif;
+  font-family: 'Itim', sans-serif;
 }
 
 input, button {
