@@ -10,14 +10,22 @@ type Props = {
 
 const Over = (props: Props) => {
     return <div className="Over">
-        <h1>Fim de jogo</h1>
+        <span className="title">Fim de jogo</span>
         <div className="result-box">
-            <h2 className="result">Resultado: </h2>
-            <ol className="list">
-                {props.finalScore.map((player: PlayerType) => <li><span style={{ color: player.color }}>{player.name}</span> - {player.score} ponto(s)</li>)}
-            </ol>
+            <span className="result">Resultado: </span>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Jogador</th><th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.finalScore.map((player: PlayerType) => <tr><td style={{ color: player.color }}>{player.name}</td><td>{player.score}</td></tr>)}
+                </tbody>
+
+            </table>
         </div>
-        <button onClick={props.onOk}>Início</button>
+        <button className="primary" onClick={props.onOk}>Início</button>
     </div>
 }
 

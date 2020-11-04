@@ -16,7 +16,7 @@ const Game = (props: Props) => {
         <button className="close-game" onClick={props.onClose}>x</button>
         <div className="container">
             <span className="title-span">
-                <h1>Vez de <span style={{ color: props.turn.color }}>{props.turn.name}</span></h1>
+                <label>Vez de <span style={{ color: props.turn.color }}>{props.turn.name}</span></label>
             </span>
             <div className="matrix">
                 {props.matrix.map((row: SquareType[], rowIndex: number) => <div className="row">

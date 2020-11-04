@@ -11,18 +11,18 @@
 
 .Over button {
     font-size: 36px;
-    padding: 14px;
     border-width: 2px;
     border-color: black;
     border-style: solid;
 }
 
-.Over h1 {
+.Over .title {
     font-size: 40px;
     padding: 14px;
     border-width: 2px;
     border-color: black;
     border-style: solid;
+    border-radius: 15px;
     margin-bottom: 10px;
 }
 
@@ -31,6 +31,7 @@
     border-width: 2px;
     border-color: black;
     border-style: solid;
+    border-radius: 15px;
     margin-bottom: 10px;
 }
 
@@ -38,12 +39,11 @@
     text-align: start;
 }
 
-.Over .result-box .list {
-    text-align: start;
-    width: fit-content;
+.Over .result-box .table {
+    width: 100%;
 }
 
-.Over .result-box .list li {
-    font-size: 20px;
-    width: fit-content;
+.Over .result-box .table th, td {
+    border: black solid 2px;
+    margin: 0;
 }
