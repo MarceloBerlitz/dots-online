@@ -4,6 +4,7 @@ body * {
   /* text-transform: uppercase; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 36px;
 }
 
 body button {
@@ -12,7 +13,7 @@ body button {
 }
 
 body button:hover {
-  background-color: #EEE;
+  opacity: 90%;
 }
 
 code {
@@ -20,7 +21,23 @@ code {
 }
 
 input, button {
+  font-size: 36px;
   border-width: 2px;
   border-color: black;
   border-style: solid;
+  border-radius: 20px;
+  padding: 8px;
+}
+
+body .primary {
+  background-color: #71C1F0;
+}
+
+body .default {
+  background-color: #91CEFF;
+}
+
+body .accent {
+  background-color: #F0B971;
+
 }

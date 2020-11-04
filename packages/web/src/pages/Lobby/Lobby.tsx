@@ -37,7 +37,7 @@ const Lobby = (props: Props) => {
         <div className="players">
             <h3>Jogadores conectados:</h3>
             <div className="players-list">
-                {props.players.map((player: { char: string, id: string }) => <span className="player-char">{player.char}</span>)}
+                {props.players.map((player: PlayerType) => <span className="player-char" style={{ color: player.color }}>{player.name}</span>)}
             </div>
         </div>
         {props.isAdmin && <button onClick={props.onStartGame}>Iniciar jogo</button>}

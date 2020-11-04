@@ -44,8 +44,7 @@ const Square = (props: Props) => {
         </div>
         <div className="row">
             <div className={"cel-border vertical left" + (props.left.isMarked ? " selected" : "") + (isLeftCol() ? " vertical-limit" : "")} onClick={() => callOnMark(SidesEnum.LEFT)} />
-            <div className="content">
-                {props?.owner?.char}
+            <div className="content" style={{ backgroundColor: props?.owner?.color }}>
             </div>
             <div className={"cel-border vertical right" + (props.right.isMarked ? " selected" : "") + (isRightCol() ? " vertical-limit" : "")} onClick={() => callOnMark(SidesEnum.RIGHT)} />
         </div>

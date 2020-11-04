@@ -27,7 +27,7 @@ export class GameRoom implements GameRoomType {
             }
             rowList.push(colList);
         }
-        this.id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+        this.id = Date.now().toString().substring(6, 12);
         this.players = [creator];
         this.matrix = rowList;
     }
@@ -99,8 +99,8 @@ export class GameRoom implements GameRoomType {
         if (this.state !== GameRoomStatesEnum.CREATED) {
             throw new Error('Can not add players after the game already started.');
         }
-        if (this.players.some(plr => plr.char === player.char)) {
-            throw new Error('Character is already in use.');
+        if (this.players.some(plr => plr.name === player.name)) {
+            throw new Error('Name is already in use.');
         }
         this.players.push(player);
     }

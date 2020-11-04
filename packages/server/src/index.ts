@@ -6,6 +6,7 @@ import socket, { Socket } from 'socket.io';
 import { GameRoom } from './game/gameRoom';
 import { Player } from './game/player';
 import { GameRoomStatesEnum } from 'dots-online-lib';
+import { colors, Color } from 'dots-online-lib';
 
 const app = express();
 const server = http.createServer(app);
@@ -19,13 +20,20 @@ app.use(cors({
    credentials: true,
 }));
 
+const getRandomColor = (playerId: string): Color => {
+   const game = games.find(game => game.players.some(player => player.id === playerId));
+   const filteredColors = game ? colors.filter((color: Color) => game.players.every(p => p.color !== color)) : colors;
+   if (filteredColors.length === 0) throw new Error('Room is full.');
+   return filteredColors[Math.round(Math.random() * filteredColors.length - 1)];
+}
+
 io.on('connection', (socket: Socket) => {
    const playerId = socket.id;
    console.log(`> Player connected: ${playerId}`);
 
    socket.on('create-room', (payload) => {
       console.log('> Create Room', { payload })
-      const admin = Player.createAdmin(playerId, payload.char);
+      const admin = Player.createAdmin(playerId, payload.name, getRandomColor(playerId));
       const newRoom = GameRoom.create(payload.rows, payload.cols, admin);
       games.push(newRoom);
       socket.emit('room-created', newRoom);
@@ -37,7 +45,7 @@ io.on('connection', (socket: Socket) => {
          socket.emit('custom-error', { message: 'Room does not exist.' });
       } else {
          try {
-            game.addPlayer(Player.create(playerId, payload.char));
+            game.addPlayer(Player.create(playerId, payload.name, getRandomColor(playerId)));
             game.players.forEach(p => {
                io.to(p.id).emit('player-joined', game);
             });

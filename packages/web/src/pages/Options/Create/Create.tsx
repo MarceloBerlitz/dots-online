@@ -9,11 +9,9 @@ type Props = {
 
 const Create = (props: Props) => {
 
-    const [rows, setRows] = useState('');
-    const [cols, setCols] = useState('')
-
     return <div className="Create">
-        <span className="rows-cols-span">
+        <label className="label">Tamanho</label>
+        {/* <span className="rows-cols-span">
             <label className="label">Linhas</label>
             <input className="input" type="text" maxLength={2} value={rows} onChange={change => setRows(change.currentTarget.value)} />
         </span>
@@ -21,10 +19,13 @@ const Create = (props: Props) => {
         <span className="rows-cols-span">
             <label className="label">Colunas</label>
             <input className="input" type="text" maxLength={2} value={cols} onChange={change => setCols(change.currentTarget.value)} />
-        </span>
+        </span> */}
 
-        <button disabled={rows.length === 0 || cols.length === 0} onClick={() => props.onCreate(+rows, +cols)}>Criar sala</button>
-        <button onClick={() => props.onBack()}>Voltar</button>
+        <button className="primary" onClick={() => props.onCreate(4, 4)}>4x4</button>
+        <button className="primary" onClick={() => props.onCreate(8, 8)}>8x8</button>
+        <button className="primary" onClick={() => props.onCreate(16, 16)}>16x16</button>
+
+        <button className="accent" onClick={() => props.onBack()}>Voltar</button>
     </div>
 };
 

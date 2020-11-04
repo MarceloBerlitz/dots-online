@@ -1,7 +1,6 @@
 .Main {
     display: flex;
     flex-direction: column;
-    font-size: 36px;
     text-align: center;
 }
 
@@ -9,26 +8,17 @@
     margin-top: 14px;
 }
 
-.Main button {
-    padding: 14px;
-}
-
 .Main > *, .Main > * > * {
     display: block;
-    font-size: 36px;
-}
-
-.Main > .char-span {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .Main .input {
-    width: 40px;
-    margin-left: 10px;
-    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 8px;
+}
+
+.Main .label {
+    text-align: left;
 }

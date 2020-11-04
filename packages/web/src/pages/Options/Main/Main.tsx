@@ -4,20 +4,18 @@ import { StepsEnum } from '../Options';
 import './Main.css';
 
 type Props = {
-    char: string,
-    onInputChar: (char: string) => void,
+    name: string,
+    onInputName: (name: string) => void,
     onSelectStep: (step: StepsEnum) => void
 };
 
 const Main = (props: Props) => {
 
     return (<div className="Main">
-        <span className="char-span">
-            <label className="initial">Sua inicial</label>
-            <input className="input" type="text" value={props.char} onChange={(val) => props.onInputChar(val.currentTarget.value)} />
-        </span>
-        <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.CREATE)}>Criar sala</button>
-        <button disabled={!props.char} onClick={() => props.onSelectStep(StepsEnum.JOIN)}>Entrar</button>
+        <label className="label">Nome</label>
+        <input className="input" type="text" value={props.name} onChange={(val) => props.onInputName(val.currentTarget.value)} />
+        <button className='primary' disabled={!props.name} onClick={() => props.onSelectStep(StepsEnum.CREATE)}>Criar sala</button>
+        <button className='primary' disabled={!props.name} onClick={() => props.onSelectStep(StepsEnum.JOIN)}>Entrar</button>
     </div>);
 }
 

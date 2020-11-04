@@ -7,8 +7,10 @@ import Join from './Join';
 import './Options.css';
 
 export type OptionsProps = {
-    onJoin: (roomId: string, char: string) => void;
-    onCreate: (rows: number, cols: number, char: string) => void;
+    name: string;
+    onNameChange: (name: string) => void;
+    onJoin: (roomId: string) => void;
+    onCreate: (rows: number, cols: number) => void;
 }
 
 export enum StepsEnum {
@@ -20,16 +22,15 @@ export enum StepsEnum {
 const Options = (props: OptionsProps) => {
 
     const [step, setStep] = useState(StepsEnum.MAIN);
-    const [char, setChar] = useState('');
 
     const getContent = () => {
         switch (step) {
             case StepsEnum.MAIN:
-                return <Main char={char} onInputChar={(char) => setChar(char)} onSelectStep={selectStepHandler} />
+                return <Main name={props.name} onInputName={(name) => props.onNameChange(name)} onSelectStep={selectStepHandler} />
             case StepsEnum.CREATE:
-                return <Create onCreate={(rows, cols) => props.onCreate(rows, cols, char)} onBack={() => setStep(StepsEnum.MAIN)} />
+                return <Create onCreate={(rows, cols) => props.onCreate(rows, cols)} onBack={() => setStep(StepsEnum.MAIN)} />
             case StepsEnum.JOIN:
-                return <Join onJoin={roomId => props.onJoin(roomId, char)} onBack={() => setStep(StepsEnum.MAIN)} />
+                return <Join onJoin={roomId => props.onJoin(roomId)} onBack={() => setStep(StepsEnum.MAIN)} />
         }
     }
 

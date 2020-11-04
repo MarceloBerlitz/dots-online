@@ -14,8 +14,8 @@ const Join = (props: Props) => {
     return <div className="Join">
         <label className="label">Código</label>
         <input className="input" type="text" value={roomId} onChange={change => setRoomId(change.currentTarget.value)} />
-        <button disabled={roomId.length === 0} onClick={() => props.onJoin(roomId)}>Entrar</button>
-        <button onClick={() => props.onBack()}>Voltar</button>
+        <button className="primary" disabled={roomId.length === 0} onClick={() => props.onJoin(roomId)}>Entrar</button>
+        <button  className="accent" onClick={() => props.onBack()}>Voltar</button>
     </div>
 };
 

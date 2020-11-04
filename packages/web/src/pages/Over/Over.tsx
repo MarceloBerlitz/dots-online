@@ -14,7 +14,7 @@ const Over = (props: Props) => {
         <div className="result-box">
             <h2 className="result">Resultado: </h2>
             <ol className="list">
-                {props.finalScore.map((player: PlayerType) => <li>{player.char} - {player.score} ponto(s)</li>)}
+                {props.finalScore.map((player: PlayerType) => <li><span style={{ color: player.color }}>{player.name}</span> - {player.score} ponto(s)</li>)}
             </ol>
         </div>
         <button onClick={props.onOk}>Início</button>

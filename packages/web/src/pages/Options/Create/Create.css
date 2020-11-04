@@ -9,13 +9,13 @@
     margin-top: 14px;
 }
 
-.Create button {
-    padding: 14px;
-}
-
 .Create > *, .Create > * > * {
     display: block;
     font-size: 36px;
+}
+
+.Create .label {
+    text-align: start;
 }
 
 .Create .rows-cols-span {
