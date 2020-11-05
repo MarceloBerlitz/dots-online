@@ -12,8 +12,8 @@ body button {
   cursor: pointer;
 }
 
-body button:hover {
-  opacity: 90%;
+body button:hover:not(:disabled) {
+  border-style: dashed;
 }
 
 code {
@@ -27,6 +27,7 @@ input, button {
   border-style: solid;
   border-radius: 20px;
   padding: 8px;
+  outline: none;
 }
 
 body .primary {

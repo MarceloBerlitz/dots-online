@@ -50,7 +50,7 @@ io.on('connection', (socket: Socket) => {
                io.to(p.id).emit('player-joined', game);
             });
          } catch (err) {
-            socket.emit('custom-error', { message: err });
+            socket.emit('custom-error', { message: err.message });
          }
       }
    });
@@ -62,7 +62,7 @@ io.on('connection', (socket: Socket) => {
             game.startGame();
             game.players.forEach(p => io.to(p.id).emit('next-player', game));
          } catch (err) {
-            socket.emit('custom-error', { message: err });
+            socket.emit('custom-error', { message: err.message });
          }
       } else {
          socket.emit('custom-error', { message: 'You can not start a game.' });
@@ -80,7 +80,7 @@ io.on('connection', (socket: Socket) => {
                game.players.forEach(p => io.to(p.id).emit('next-player', game));
             }
          } catch (err) {
-            socket.emit('custom-error', { message: err });
+            socket.emit('custom-error', { message: err.message });
          }
       } else {
          socket.emit('custom-error', { message: 'Can not play.' });
@@ -94,12 +94,19 @@ io.on('connection', (socket: Socket) => {
       const currentGameIndex = games.findIndex(game => game.players.some(plr => plr.id === playerId));
       if (currentGameIndex >= 0) {
          const currentGame = games[currentGameIndex];
-         currentGame.players.forEach((player: Player) => {
-            io.to(player.id).emit('custom-error', { message: 'Player disconnected.' });
-         });
-         games.splice(currentGameIndex, 1);
+         if (currentGame.state === GameRoomStatesEnum.CREATED) {
+            currentGame.players = currentGame.players.filter(p => p.id !== playerId);
+            currentGame.players.forEach((player: Player) => {
+               io.to(player.id).emit('player-disconnected', currentGame);
+            });
+         } else {
+            currentGame.players.forEach((player: Player) => {
+               io.to(player.id).emit('custom-error', { message: `${currentGame.players.find(p => p.id === playerId).name} se desconectou.` });
+            });
+            games.splice(currentGameIndex, 1);
+         }
       }
-   });
+      });
 
 });
 

@@ -40,7 +40,14 @@ function App() {
       setGameRoom(payload);
     });
 
+    socket.on('player-disconnected', (payload: GameRoomType) => {
+      setGameRoom(payload);
+    });
+
     socket.on('custom-error', (payload: { message: string }) => {
+      if (gameRoom?.state === GameRoomStatesEnum.RUNNING) {
+        setGameRoom(null);
+      }
       alert(payload.message);
     });
 

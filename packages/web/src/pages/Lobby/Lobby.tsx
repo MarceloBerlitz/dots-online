@@ -31,9 +31,9 @@ const Lobby = (props: Props) => {
 
     return <div className="Lobby">
         <div className="room">
-            <span>Número da sala</span>
+            <span>Código da sala</span>
             <div className="row">
-                <input ref={roomNumberRef} value={props.roomId} />
+                <input readOnly ref={roomNumberRef} value={props.roomId} />
                 <button className="primary" disabled={copied} onClick={copyClickHandler}>{copied ? 'Copiado' : 'Copiar'}</button>
             </div>
         </div>
