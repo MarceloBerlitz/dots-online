@@ -86,7 +86,7 @@ function App() {
   }
 
   const squareClickHandler = (rowIndex: number, colIndex: number, side: SidesEnum) => {
-    if (gameRoom?.turn.name === nameState) {
+    if (gameRoom?.turn?.name === nameState) {
       socket.emit('play', { rowIndex, colIndex, side })
     }
   }
@@ -105,7 +105,7 @@ function App() {
         <Lobby roomId={gameRoom.id} players={gameRoom.players} onStartGame={startGameHandler} isAdmin={isAdmin()} onCancel={gameOverHandler} />}
 
       {(gameRoom?.matrix && gameRoom.state === GameRoomStatesEnum.RUNNING) &&
-        <Game turn={gameRoom.turn} matrix={gameRoom.matrix} onSquareClick={squareClickHandler} onClose={gameOverHandler} />}
+        <Game turn={gameRoom.turn!} matrix={gameRoom.matrix} onSquareClick={squareClickHandler} onClose={gameOverHandler} />}
 
       {(gameRoom?.state === GameRoomStatesEnum.OVER && finalScore) && <Over finalScore={finalScore} onOk={gameOverHandler} />}
     </div >
