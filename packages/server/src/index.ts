@@ -7,7 +7,8 @@ import { listenToSocketEvents } from './socket/listenToSocketEvents';
 
 const app = express();
 const server = http.createServer(app);
-listenToSocketEvents(socketio(server));
+const io = socketio(server);
+listenToSocketEvents(io);
 const port = process.env.PORT || 3333;
 
 app.use(cors({
@@ -19,4 +20,6 @@ app.use(express.static('public'));
 
 server.listen(port, () => {
    console.log('Listening on port ' + port);
-})
+});
+
+export { io };

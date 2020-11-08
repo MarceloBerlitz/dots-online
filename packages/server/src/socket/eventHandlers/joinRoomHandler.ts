@@ -4,8 +4,9 @@ import { PlayerType, ServerEventsEnum } from "dots-online-lib";
 import { PlayerFactory } from "../../factories/player.factory";
 import games from "../../games";
 import { addPlayer, getRandomColor } from "../../gameUtils";
+import { io } from '../..';
 
-export const joinRoomHandler = (socket: Socket, io: Server, playerId: string, payload: any) => {
+export const joinRoomHandler = (socket: Socket, playerId: string, payload: any) => {
     const game = games.find(g => g.id === payload.roomId);
     if (!game) {
         socket.emit(ServerEventsEnum.ERROR, { message: 'Room does not exist.' });
