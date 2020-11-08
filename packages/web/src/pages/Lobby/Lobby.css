@@ -1,9 +1,6 @@
 .Lobby {
-    width: 300px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-70%) translateX(-50%);
+    max-width: 400px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -36,13 +33,15 @@
 
 .Lobby > .room > .row > input {
     font-size: 26px;
-    width: 150px;
     padding: 4px;
+    width: 70%;
 }
 
 .Lobby > .room > .row > button {
+    width: 30%;
+    min-width: 100px;
     font-size: 26px;
-    width: 106px;
+    margin-left: 10px;
     padding: 4px;
 }
 

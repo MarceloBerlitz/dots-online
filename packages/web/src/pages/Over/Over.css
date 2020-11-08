@@ -1,9 +1,6 @@
 .Over {
-    width: 300px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-70%) translateX(-50%);
+    max-width: 400px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     text-align: center;

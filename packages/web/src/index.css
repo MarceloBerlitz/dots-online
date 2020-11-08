@@ -7,6 +7,10 @@ body * {
   font-size: 36px;
 }
 
+body {
+  padding: 1rem;
+}
+
 body button {
   background-color: white;
   cursor: pointer;

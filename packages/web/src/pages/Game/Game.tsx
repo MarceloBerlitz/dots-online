@@ -12,12 +12,17 @@ type Props = {
 };
 
 const Game = (props: Props) => {
+
+    const closeHandler = () => {
+        if (window.confirm('Deseja sair do jogo?')) props.onClose()
+    }
+
     return <div className="Game">
-        <button className="close-game" onClick={props.onClose}>x</button>
+        <button className="close-game" onClick={closeHandler}>X</button>
+        <span className="title-span">
+            <label>Vez de <span style={{ color: props.turn.color }}>{props.turn.name}</span></label>
+        </span>
         <div className="container">
-            <span className="title-span">
-                <label>Vez de <span style={{ color: props.turn.color }}>{props.turn.name}</span></label>
-            </span>
             <div className="matrix">
                 {props.matrix.map((row: SquareType[], rowIndex: number) => <div className="row">
                     {row.map((square: SquareType, colIndex: number) => <Square {...square}

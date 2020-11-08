@@ -6,8 +6,8 @@ import { io } from '../..'
 import games from "../../games";
 
 export const startGameHandler = (socket: Socket, playerId: string) => {
-    console.log(`[event] start-game (${JSON.stringify({ playerId })})`);
-    const game = games.find(g => g.players.find((p: PlayerType) => p.isAdmin).id === playerId);
+    console.log(`[event] start-game (${JSON.stringify({ playerId, games })})`);
+    const game = games.find(g => g.players.find((p: PlayerType) => p.isAdmin)?.id === playerId);
     if (game) {
         try {
             startGame(game);
