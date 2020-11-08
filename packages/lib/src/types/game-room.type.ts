@@ -6,6 +6,6 @@ export type GameRoomType = {
     id: string;
     matrix: SquareType[][];
     players: PlayerType[];
-    turn: PlayerType;
+    turn?: PlayerType;
     state: GameRoomStatesEnum;
 }
