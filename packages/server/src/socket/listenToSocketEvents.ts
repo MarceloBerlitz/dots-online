@@ -11,8 +11,7 @@ import { disconnectHandler } from './eventHandlers/disconnectHandler';
 export const listenToSocketEvents = (io: Server) => {
     io.on('connection', (socket: Socket) => {
         const playerId = socket.id;
-        console.log(`>> Player connected: ${playerId}`);
-
+        console.log(`[event] connection (${playerId})`);
         socket.on(ClientEventsEnum.CREATE_ROOM, (payload) => createRoomHandler(socket, playerId, payload));
         socket.on(ClientEventsEnum.JOIN_ROOM, (payload) => joinRoomHandler(socket, playerId, payload));
         socket.on(ClientEventsEnum.START_GAME, () => startGameHandler(socket, playerId));

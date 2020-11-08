@@ -9,7 +9,7 @@ import { getRandomColor } from "../../gameUtils";
 type Payload = { name: string, rows: number, cols: number };
 
 export const createRoomHandler = (socket: Socket, playerId: string, payload: Payload): void => {
-    console.log('> Create Room', { payload })
+    console.log(`[event] create-room (${JSON.stringify({ playerId, payload })})`);
     const admin = PlayerFactory.createAdmin(playerId, payload.name, getRandomColor());
     const newRoom = GameRoomFactory.create(payload.rows, payload.cols, admin);
     games.push(newRoom);

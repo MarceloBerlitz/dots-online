@@ -11,7 +11,7 @@ const markOwnedSquares = (game: GameRoomType, rowIndex: number, colIndex: number
         case 'top':
             if (game.matrix[rowIndex - 1]) {
                 const above = game.matrix[rowIndex - 1][colIndex];
-                if (verifySquareOwned(above)) {
+                if (above && verifySquareOwned(above)) {
                     above.owner = game.turn;
                     game.turn.score++;
                 }
@@ -27,7 +27,7 @@ const markOwnedSquares = (game: GameRoomType, rowIndex: number, colIndex: number
         case 'bottom':
             if (game.matrix[rowIndex + 1]) {
                 const bellow = game.matrix[rowIndex + 1][colIndex];
-                if (verifySquareOwned(bellow)) {
+                if (bellow && verifySquareOwned(bellow)) {
                     bellow.owner = game.turn;
                     game.turn.score++;
                 }

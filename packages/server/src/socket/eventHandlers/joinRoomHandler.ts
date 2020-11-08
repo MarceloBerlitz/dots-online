@@ -6,7 +6,8 @@ import games from "../../games";
 import { addPlayer, getRandomColor } from "../../gameUtils";
 import { io } from '../..';
 
-export const joinRoomHandler = (socket: Socket, playerId: string, payload: any) => {
+export const joinRoomHandler = (socket: Socket, playerId: string, payload: { name: string, roomId: string }) => {
+    console.log(`[event] join-room (${JSON.stringify({ playerId, payload })})`);
     const game = games.find(g => g.id === payload.roomId);
     if (!game) {
         socket.emit(ServerEventsEnum.ERROR, { message: 'Room does not exist.' });

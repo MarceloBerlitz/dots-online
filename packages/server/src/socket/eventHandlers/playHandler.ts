@@ -5,6 +5,7 @@ import { io } from '../..';
 import { Socket } from "socket.io";
 
 export const playHandler = (socket: Socket, playerId: string, payload: { rowIndex: number, colIndex: number, side: SidesEnum }) => {
+    console.log(`[event] play (${JSON.stringify({ playerId, payload })})`);
     const game = games.find(g => g.players.some((p: PlayerType) => p.id === playerId));
     if (game && game.turn.id === playerId) {
         try {
@@ -14,8 +15,8 @@ export const playHandler = (socket: Socket, playerId: string, payload: { rowInde
             } else {
                 game.players.forEach((p: PlayerType) => io.to(p.id).emit(ServerEventsEnum.NEXT_PLAYER, game));
             }
-        } catch (err) {
-            socket.emit(ServerEventsEnum.ERROR, { message: err.message });
+        } catch ({ message }) {
+            socket.emit(ServerEventsEnum.ERROR, { message });
         }
     } else {
         socket.emit(ServerEventsEnum.ERROR, { message: 'Can not play.' });

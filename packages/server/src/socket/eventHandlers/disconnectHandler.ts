@@ -3,8 +3,7 @@ import games from "../../games";
 import { io } from '../..';
 
 export const disconnectHandler = (playerId: string) => {
-    console.log(`> Player disconnected: ${playerId}`);
-
+    console.log(`[event] disconnect (${JSON.stringify({ playerId })})`);
     const currentGameIndex = games.findIndex(game => game.players.some((plr: PlayerType) => plr.id === playerId));
     if (currentGameIndex >= 0) {
         const currentGame = games[currentGameIndex];
