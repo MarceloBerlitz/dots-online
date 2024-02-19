@@ -1,4 +1,4 @@
-import { GameRoomType } from "dots-online-lib";
+import { GameRoomType } from "@do/lib";
 
 const games: GameRoomType[] = [];
 

@@ -1,4 +1,4 @@
-import { GameRoomStatesEnum, GameRoomType, SidesEnum } from "dots-online-lib";
+import { GameRoomStatesEnum, GameRoomType, SidesEnum } from "@do/lib";
 
 import { verifySquareOwned } from "./verifySquareOwned";
 

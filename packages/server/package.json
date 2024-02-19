@@ -1,5 +1,5 @@
 {
-    "name": "@dots-online/server",
+    "name": "@do/server",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "private": false,
@@ -8,12 +8,13 @@
     "license": "MIT",
     "scripts": {
         "start": "nodemon",
-        "build": "tsc --declaration"
+        "build": "tsc --declaration",
+        "clean": "rm -rf ./dist & rm -rf ./public"
     },
     "dependencies": {
+        "@do/lib": "^1.0.0",
         "@types/cors": "^2.8.8",
         "cors": "^2.8.5",
-        "dots-online-lib": "^1.0.0",
         "express": "^4.17.1"
     },
     "devDependencies": {

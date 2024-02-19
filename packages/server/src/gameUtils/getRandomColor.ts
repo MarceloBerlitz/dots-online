@@ -1,4 +1,4 @@
-import { ColorType, colors, GameRoomType } from "dots-online-lib";
+import { ColorType, colors, GameRoomType } from "@do/lib";
 
 export const getRandomColor = (game?: GameRoomType): ColorType => {
     const filteredColors = game ? colors.filter((color: ColorType) => game.players.every(p => p.color !== color)) : colors;

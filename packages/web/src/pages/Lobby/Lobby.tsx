@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { PlayerType } from 'dots-online-lib';
+import { PlayerType } from '@do/lib';
 import './Lobby.css';
 
 type Props = {

@@ -1,4 +1,4 @@
-import { GameRoomStatesEnum, GameRoomType, PlayerType } from 'dots-online-lib';
+import { GameRoomStatesEnum, GameRoomType, PlayerType } from '@do/lib';
 import { MatrixFactory } from './matrix.factory';
 
 export class GameRoomFactory {

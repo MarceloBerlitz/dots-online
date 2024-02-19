@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import io from 'socket.io-client';
 
-import { GameRoomStatesEnum, GameRoomType, PlayerType, SidesEnum } from 'dots-online-lib';
+import { GameRoomStatesEnum, GameRoomType, PlayerType, SidesEnum } from '@do/lib';
 
 import './App.css';
 import Options from '../Options';
