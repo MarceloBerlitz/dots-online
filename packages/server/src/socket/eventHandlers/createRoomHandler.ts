@@ -8,10 +8,11 @@ import { getRandomColor } from "../../gameUtils";
 
 type Payload = { name: string, rows: number, cols: number };
 
-export const createRoomHandler = (socket: Socket, playerId: string, payload: Payload): void => {
+export const createRoomHandler = (io: Socket, playerId: string, payload: Payload): void => {
     console.log(`[event] create-room (${JSON.stringify({ playerId, payload })})`);
     const admin = PlayerFactory.createAdmin(playerId, payload.name, getRandomColor());
     const newRoom = GameRoomFactory.create(payload.rows, payload.cols, admin);
     games.push(newRoom);
-    socket.emit(ServerEventsEnum.ROOM_CREATED, newRoom);
+    io.join(newRoom.id);
+    io.emit(ServerEventsEnum.ROOM_CREATED, newRoom);
 }
