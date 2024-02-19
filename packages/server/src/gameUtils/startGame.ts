@@ -1,4 +1,4 @@
-import { GameRoomStatesEnum, GameRoomType } from "dots-online-lib";
+import { GameRoomStatesEnum, GameRoomType } from "@do/lib";
 
 export const startGame = (game: GameRoomType): void => {
     if (game.players.length < 2) {

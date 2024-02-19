@@ -1,12 +1,31 @@
 {
-    "name": "dots-online",
-    "private": true,
-    "version": "1.0.0",
-    "author": "Marcelo Berlitz",
-    "license": "MIT",
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ]
-    }
+  "name": "dots-online",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Marcelo Berlitz",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn server:start & yarn web:start",
+    "start:prod": "node ./packages/server/dist/index.js",
+    "prebuild": "yarn clean",
+    "build": "yarn lib:build && yarn web:build && yarn server:build",
+    "postbuild": "yarn moveweb",
+    "clean": "yarn lib:clean & yarn web:clean & yarn server:clean",
+    "lib:build": "yarn workspace @do/lib build",
+    "lib:clean": "yarn workspace @do/lib clean",
+    "web:start": "yarn workspace @do/web start",
+    "web:build": "yarn workspace @do/web build",
+    "web:clean": "yarn workspace @do/web clean",
+    "server:start": "yarn workspace @do/server start",
+    "server:build": "yarn workspace @do/server build",
+    "server:clean": "yarn workspace @do/server clean",
+    "premoveweb": "mkdir -p ./packages/server/dist/public/",
+    "moveweb": "mv ./packages/web/build/* ./packages/server/dist/public/.",
+    "test": "echo 'not implemented'"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
 }

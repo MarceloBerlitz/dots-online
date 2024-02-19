@@ -1,6 +1,6 @@
 import { Socket } from "socket.io";
 
-import { ServerEventsEnum } from "dots-online-lib";
+import { ServerEventsEnum } from "@do/lib";
 import { GameRoomFactory } from "../../factories/game-room.factory";
 import { PlayerFactory } from "../../factories/player.factory";
 import games from "../../games";

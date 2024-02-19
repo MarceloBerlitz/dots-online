@@ -1,6 +1,6 @@
 import { Socket } from "socket.io";
 
-import { PlayerType, ServerEventsEnum } from "dots-online-lib";
+import { PlayerType, ServerEventsEnum } from "@do/lib";
 import { startGame } from "../../gameUtils";
 import { io } from '../..'
 import games from "../../games";

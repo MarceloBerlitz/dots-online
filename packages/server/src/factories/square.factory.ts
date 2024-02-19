@@ -1,4 +1,4 @@
-import { SideType, SquareType } from "dots-online-lib";
+import { SideType, SquareType } from "@do/lib";
 
 export class SquareFactory {
     public static create(top: SideType, right: SideType, bottom: SideType, left: SideType): SquareType {

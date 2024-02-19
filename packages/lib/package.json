@@ -1,12 +1,13 @@
 {
-  "name": "dots-online-lib",
+  "name": "@do/lib",
   "version": "1.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "marceloberlitz",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --declaration"
+    "build": "tsc --declaration",
+    "clean": "rm -rf ./dist"
   },
   "devDependencies": {
     "typescript": "^4.0.5"

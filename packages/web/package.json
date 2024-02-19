@@ -1,10 +1,11 @@
 {
-  "name": "web",
+  "name": "@do/web",
   "version": "0.1.0",
   "private": true,
   "author": "Marcelo Berlitz",
   "license": "MIT",
   "dependencies": {
+    "@do/lib": "^1.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -13,7 +14,6 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "@types/socket.io-client": "^1.4.34",
-    "dots-online-lib": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf ./build"
   },
   "eslintConfig": {
     "extends": [

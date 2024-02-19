@@ -1,6 +1,6 @@
 import { Server, Socket } from "socket.io";
 
-import { PlayerType, ServerEventsEnum } from "dots-online-lib";
+import { PlayerType, ServerEventsEnum } from "@do/lib";
 import { PlayerFactory } from "../../factories/player.factory";
 import games from "../../games";
 import { addPlayer, getRandomColor } from "../../gameUtils";

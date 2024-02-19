@@ -1,4 +1,4 @@
-import { GameRoomStatesEnum, GameRoomType, PlayerType } from "dots-online-lib";
+import { GameRoomStatesEnum, GameRoomType, PlayerType } from "@do/lib";
 
 export const addPlayer = (game: GameRoomType, player: PlayerType): void => {
     if (game.state !== GameRoomStatesEnum.CREATED) {

@@ -1,5 +1,5 @@
-import { PlayerType } from "dots-online-lib";
-import { ColorType } from "dots-online-lib";
+import { PlayerType } from "@do/lib";
+import { ColorType } from "@do/lib";
 
 export class PlayerFactory {
 

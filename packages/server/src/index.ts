@@ -16,7 +16,11 @@ app.use(cors({
    credentials: true,
 }));
 
-app.use(express.static('public'));
+const baseDir = `${__dirname}/public/`;
+
+app.use(express.static(baseDir));
+
+app.get("*", (_, res) => res.sendFile("index.html", { root: baseDir }));
 
 server.listen(port, () => {
    console.log('Listening on port ' + port);

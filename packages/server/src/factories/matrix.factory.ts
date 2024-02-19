@@ -1,4 +1,4 @@
-import { SquareType } from "dots-online-lib";
+import { SquareType } from "@do/lib";
 import { SquareFactory } from "./square.factory";
 
 export class MatrixFactory {

@@ -1,4 +1,4 @@
-import { GameRoomStatesEnum, PlayerType, ServerEventsEnum } from "dots-online-lib";
+import { GameRoomStatesEnum, PlayerType, ServerEventsEnum } from "@do/lib";
 import games from "../../games";
 import { io } from '../..';
 

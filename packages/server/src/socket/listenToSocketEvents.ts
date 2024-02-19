@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
 
-import { ClientEventsEnum } from 'dots-online-lib';
+import { ClientEventsEnum } from '@do/lib';
 
 import { createRoomHandler } from './eventHandlers/createRoomHandler';
 import { joinRoomHandler } from './eventHandlers/joinRoomHandler';

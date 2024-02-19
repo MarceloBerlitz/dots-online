@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PlayerType } from 'dots-online-lib';
+import { PlayerType } from '@do/lib';
 import './Over.css';
 
 type Props = {
