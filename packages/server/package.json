@@ -1,26 +1,25 @@
 {
-    "name": "@do/server",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "private": false,
-    "version": "1.0.1",
-    "author": "marceloberlitz",
-    "license": "MIT",
-    "scripts": {
-        "start": "nodemon",
-        "build": "tsc --declaration",
-        "clean": "rm -rf ./dist & rm -rf ./public"
-    },
-    "dependencies": {
-        "@do/lib": "^1.0.0",
-        "@types/cors": "^2.8.8",
-        "cors": "^2.8.5",
-        "express": "4.18.2",
-        "socket.io": "4.7.4"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.6",
-        "ts-node": "^9.0.0",
-        "typescript": "^4.0.5"
-    }
+  "name": "@do/server",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "version": "1.0.1",
+  "author": "marceloberlitz",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon",
+    "build": "tsc --declaration",
+    "clean": "rm -rf ./dist & rm -rf ./public"
+  },
+  "dependencies": {
+    "@do/lib": "^1.0.0",
+    "@types/cors": "^2.8.8",
+    "express": "4.18.2",
+    "socket.io": "4.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.0.5"
+  }
 }
